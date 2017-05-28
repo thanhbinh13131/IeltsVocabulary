@@ -55,13 +55,8 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-       // mHomeAdapter = new HomeAdapter(getApplicationContext(), null, 0);
 
-        //String sortOrder = VocabularyBuiltUri.UnitEntry.COLUMN_AVATAR_URI;
         Uri avatarUri = VocabularyBuiltUri.UnitEntry.CONTENT_URI;
-
-       // String[] projection = new String[]{VocabularyBuiltUri.UnitEntry.TABLE_ID,
-          //                                  VocabularyBuiltUri.UnitEntry.COLUMN_AVATAR_URI};
         Cursor cur = this.getContentResolver().query(avatarUri,
                 UNIT_COLUMNS, null, null, null);
 
@@ -72,36 +67,6 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
 
         mGridView.setAdapter(mHomeAdapter);
 
-//
-//        int d = cur.getColumnCount();
-
-//        mForecastAdapter = new ForecastAdapter(getActivity(), cur, 0);
-//
-//
-//
-//
-//
-//        listUnit = new ArrayList<Unit>();
-//        myData = new MyDataDbHelper(this);
-//        myData.open();
-//        myDataBase = myData.getMyDatabase();
-//        listUnit = loadData();
-//        homeAdapter = new HomeAdapter(this,R.layout.custom_home, listUnit);
-//        GridView gv = (GridView) findViewById(R.id.listUnit);
-//        gv.setAdapter(homeAdapter);
-//    }
-//    public ArrayList<Unit> loadData(){
-//        ArrayList<Unit> arrUnit = new ArrayList<Unit>();
-//        Cursor c = myDataBase.rawQuery("SELECT * FROM UNIT", null);
-//        c.moveToFirst();
-//        String data = "";
-//        while(c.isAfterLast() == false){
-//            arrUnit.add(new Unit(c.getInt(0),c.getString(1).toString().trim(),Integer.parseInt(c.getString(2)),c.getString(3).trim().toString()));
-//            c.moveToNext();
-//        }
-//        c.close();
-//        return arrUnit;
-//    }
     }
 
     @Override
