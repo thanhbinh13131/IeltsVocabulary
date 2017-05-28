@@ -16,6 +16,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".LessonActivity"></activity>
+        <provider
+            android:name=".data.IeltsProvider"
+            android:authorities="com.example.healer.ieltsvocabulary"
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.example.healer.ieltsvocabulary.app.LICENSE_TO_KILL" />
     </application>
 
 </manifest>

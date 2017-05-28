@@ -1,12 +1,5 @@
 package com.example.healer.ieltsvocabulary.fragment;
 
-import com.example.healer.ieltsvocabulary.R;
-import com.example.healer.ieltsvocabulary.adapter.MyDataBaseAdapter;
-import com.example.healer.ieltsvocabulary.adapter.NumOfLessonAdapter;
-import com.example.healer.ieltsvocabulary.model.Lesson;
-import com.example.healer.ieltsvocabulary.model.Unit;
-import com.example.healer.ieltsvocabulary.model.Vocabulary;
-
 import android.app.Fragment;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -16,16 +9,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.healer.ieltsvocabulary.R;
+import com.example.healer.ieltsvocabulary.adapter.NumOfLessonAdapter;
+import com.example.healer.ieltsvocabulary.data.MyDataDbHelper;
+import com.example.healer.ieltsvocabulary.model.Lesson;
+import com.example.healer.ieltsvocabulary.model.Vocabulary;
+
 import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Enumeration;
 
 public class LessonFragment extends  Fragment {
 	NumOfLessonAdapter lists = null;
-	MyDataBaseAdapter myData = null;
+	MyDataDbHelper myData = null;
 	SQLiteDatabase myDataBase = null;
 	ArrayList<Vocabulary> list = null;
 	int id;
@@ -42,7 +38,7 @@ public class LessonFragment extends  Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle BundlesavedInstanceState){
 		View rootView = inflater.inflate(R.layout.category_lesson,container, false);
 		ListView listView = (ListView) rootView.findViewById(R.id.listLesson);
-		myData = new MyDataBaseAdapter(this.getActivity());
+		myData = new MyDataDbHelper(this.getActivity());
 		myData.open();
 		myDataBase = myData.getMyDatabase();
 		list = new ArrayList<Vocabulary>();

@@ -1,12 +1,5 @@
-package com.example.healer.ieltsvocabulary.adapter;
+package com.example.healer.ieltsvocabulary.data;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteDatabase;
@@ -14,14 +7,21 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class MyDataBaseAdapter extends SQLiteOpenHelper {
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
-	private String DB_PATH = "/data/data/com.example.learnvocabulary/databases/";
+public class MyDataDbHelper extends SQLiteOpenHelper {
+
+	private String DB_PATH = "com.example.healer.ieltsvocabulary";
+			//"/data/data/com.example.learnvocabulary/databases/";
 	private static String DB_NAME = "cambrige_vocabulary.db";
 
 	private Context context;
 	private SQLiteDatabase myDatabase;
-	public MyDataBaseAdapter(Context context){
+	public MyDataDbHelper(Context context){
 		super(context, DB_NAME, null, 1);
 		
 		this.context = context;
@@ -52,7 +52,8 @@ public class MyDataBaseAdapter extends SQLiteOpenHelper {
 		try
 		{
 			copyDatabase();
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -112,8 +113,8 @@ public class MyDataBaseAdapter extends SQLiteOpenHelper {
 		return checkdb;
 	}
 
-	public MyDataBaseAdapter(Context context, String name,
-			CursorFactory factory, int version) {
+	public MyDataDbHelper(Context context, String name,
+                          CursorFactory factory, int version) {
 		super(context, name, factory, version);
 		// TODO Auto-generated constructor stub
 
