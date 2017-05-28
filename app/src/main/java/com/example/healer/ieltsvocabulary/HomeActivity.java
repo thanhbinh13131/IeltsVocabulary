@@ -66,6 +66,26 @@ public class HomeActivity extends AppCompatActivity implements LoaderManager.Loa
         mGridView = (GridView) findViewById(R.id.list_unit_gridview);
 
         mGridView.setAdapter(mHomeAdapter);
+//        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+//                Cursor cursor = (Cursor) adapterView.getItemAtPosition(position);
+//                LessonFragment lf = LessonFragment.newInstance(position,cursor.getInt(COL_UNIT_ID));
+//				getFragmentManager().beginTransaction().replace(R.id.fragment_container,lf).addToBackStack(null).commit();
+//
+//				Toast.makeText(HomeActivity.this,"You clicked a unit!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        mGridView.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View view) {
+//
+//				LessonFragment lf = LessonFragment.newInstance(position,unit.getId());
+//				context.getFragmentManager().beginTransaction().replace(R.id.fragment_container,lf).addToBackStack(null).commit();
+//
+//				//Toast.makeText(context,"asdfas",Toast.LENGTH_SHORT).show();
+//			}
+//		});
 
     }
 

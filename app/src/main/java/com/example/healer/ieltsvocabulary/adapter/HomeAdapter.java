@@ -1,5 +1,6 @@
 package com.example.healer.ieltsvocabulary.adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.database.Cursor;
@@ -11,9 +12,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.healer.ieltsvocabulary.HomeActivity;
 import com.example.healer.ieltsvocabulary.R;
+import com.example.healer.ieltsvocabulary.fragment.LessonFragment;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,7 +64,7 @@ public class HomeAdapter extends CursorAdapter {
 	}
 
 	@Override
-	public void bindView(View view, Context context, Cursor cursor) {
+	public void bindView(View view, final Context context, final Cursor cursor) {
 
 		ViewHolder viewHolder = (ViewHolder) view.getTag();
 
@@ -76,7 +79,17 @@ public class HomeAdapter extends CursorAdapter {
         Log.e("Avater Uri:", avatarUri);
 
 		viewHolder.img.setImageBitmap(decodeFile(context, avatarUri));
+		viewHolder.img.setOnClickListener(new View.OnClickListener() {
+		@Override
+			public void onClick(View view) {
 
+			//Cursor cur = (Cursor) cursor.getPosition();
+			LessonFragment lf = LessonFragment.newInstance(cursor.getPosition(),cursor.getInt(HomeActivity.COL_UNIT_ID));
+            ((Activity)context).getFragmentManager().beginTransaction().replace(R.id.fragment_container,lf).addToBackStack(null).commit();
+
+		Toast.makeText(context,"You clicked a unit!", Toast.LENGTH_SHORT).show();
+			}
+		});
 	}
 //	public void setUseTodayLayout(boolean useTodayLayout){
 //		mUseTodayLayout = useTodayLayout;
